@@ -3,6 +3,8 @@ MAINTAINER Lyle Scott, III "lyle@digitalfoo.net"
 
 ENV MYNETWORKS                      127.0.0.0/8 192.168.59.0/24
 ENV SYSTEM_TIMEZONE                 UTC
+ENV EMAIL                           username@gmail.com
+ENV EMAILPASS                       abc123
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -27,7 +29,7 @@ RUN postconf -e mynetworks="${MYNETWORKS}"
 
 #>> Setup sasl to authenticate to Gmail.
 # Provide a username/password to Gmail.
-RUN echo '[smtp.gmail.com]:587    username@gmail.com:password' > /etc/postfix/sasl_passwd
+RUN echo '[smtp.gmail.com]:587    ${EMAIL}:${EMAILPASS}' > /etc/postfix/sasl_passwd
 # Generate a BerkelyDB that will hash the sensitive information.
 RUN postmap /etc/postfix/sasl_passwd
 # No need to for plain-text passwords laying around, so remove it!
