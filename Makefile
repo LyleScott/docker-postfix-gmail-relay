@@ -1,15 +1,22 @@
 APPNAME="postfix-gmail-relay"
+LINKNAME="gmailrelay"
 HOST_PORT=9025
 CONTAINER_PORT=25
 
 build:
-	docker build --rm=true -t lylescott/${APPNAME} .
+	docker build -t lylescott/${APPNAME} .
 
 run:
-	docker run --name ${APPNAME} --rm=true -i -t -p ${HOST_PORT}:${CONTAINER_PORT} lylescott/${APPNAME}
+	docker run -i -t --rm \
+        --name ${LINKNAME} \
+        -p ${HOST_PORT}:${CONTAINER_PORT} \
+        lylescott/${APPNAME}
 
 shell:
-	docker run --name ${APPNAME} --rm=true -i -t -p ${HOST_PORT}:${CONTAINER_PORT} lylescott/${APPNAME} /bin/bash
+	docker run -i -t --rm \
+        --name ${LINKNAME} \
+        -p ${HOST_PORT}:${CONTAINER_PORT} \
+        lylescott/${APPNAME} /bin/bash
 
 clean:
 	docker rmi -f lylescott/${APPNAME}

@@ -1,7 +1,10 @@
 FROM ubuntu:14.04
 MAINTAINER Lyle Scott, III "lyle@digitalfoo.net"
 
-ENV MYNETWORKS                      127.0.0.0/8 192.168.59.0/24
+# STANDALONE IMAGE ... you can't override these. It would be silly to supply
+# the password in plain text.
+
+ENV MYNETWORKS                      127.0.0.0/8 192.168.59.0/24 172.17.0.0/16
 ENV SYSTEM_TIMEZONE                 UTC
 ENV EMAIL                           username@gmail.com
 ENV EMAILPASS                       abc123
