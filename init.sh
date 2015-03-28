@@ -22,3 +22,5 @@ if [ ! -z "${EMAIL}" ] && [ ! -z "${EMAILPASS}" ]; then
 else
     echo "EMAIL or EMAILPASS not set!"
 fi
+unset EMAIL
+unset EMAILPASS
