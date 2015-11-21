@@ -29,6 +29,7 @@ apt-get install -q -y \
 # system() can't be used since Docker doesn't allow access to /proc/kmsg.
 # https://groups.google.com/forum/#!topic/docker-user/446yoB0Vx6w
 sed -i -E 's/^(\s*)system\(\);/\1unix-stream("\/dev\/log");/' /etc/syslog-ng/syslog-ng.conf && \
+sed -i '/^smtp_tls_CAfile =/d' /etc/postfix/main.cf && \
 
 apt-get install -q -y \
     supervisor
