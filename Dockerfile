@@ -34,6 +34,7 @@ sed -i '/^smtp_tls_CAfile =/d' /etc/postfix/main.cf && \
 
 apt-get install -q -y \
     supervisor
+
 COPY supervisord.conf /etc/supervisor/
 COPY init.sh /opt/init.sh
 
