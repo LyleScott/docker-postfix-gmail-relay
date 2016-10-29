@@ -25,3 +25,8 @@ docker run -i -t --rm \
     postfix-gmail-relay
 ```
 
+## docker-compose example
+
+```bash
+docker-compose up
+```
